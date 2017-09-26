@@ -1,0 +1,22 @@
+name: tekartik_cmd_echo
+description: A sample command-line application.
+version: 0.1.0
+homepage: https://github.com/tekartik/cmd_echo.dart
+author: tekartik <alex@tekartik.com>
+
+dependencies:
+  tekartik_common_utils:
+    git: git://github.com/tekartik/common_utils.dart
+    version: '>=0.4.13'
+  args: any
+  pub_semver: any
+  path: any
+  process_run: any
+
+environment:
+  sdk: '>=1.20.1 <2.0.0'
+
+
+dev_dependencies:
+  dev_test: any
+  test: ">=0.12.0"
