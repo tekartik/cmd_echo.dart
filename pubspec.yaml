@@ -6,7 +6,9 @@ author: tekartik <alex@tekartik.com>
 
 dependencies:
   tekartik_common_utils:
-    git: git://github.com/tekartik/common_utils.dart
+    git:
+      url: git://github.com/tekartik/common_utils.dart
+      ref: dart1
     version: '>=0.4.13'
   args: any
   pub_semver: any
