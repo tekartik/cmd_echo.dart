@@ -17,10 +17,10 @@ void main() {
       List<String> arguments, {
       String workingDirectory,
       Map<String, String> environment,
-      includeParentEnvironment: true,
+      bool includeParentEnvironment: true,
       bool runInShell: false,
-      stdoutEncoding: SYSTEM_ENCODING,
-      stderrEncoding: SYSTEM_ENCODING,
+      SystemEncoding stdoutEncoding: SYSTEM_ENCODING,
+      SystemEncoding stderrEncoding: SYSTEM_ENCODING,
       StreamSink<List<int>> stdout,
     }) async {
       ProcessResult result = await Process.run(
