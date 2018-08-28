@@ -12,15 +12,15 @@ String get echoScriptPath => join('bin', 'echo.dart');
 void main() {
   group('cmd_echo', () {
     Future _runCheck(
-      check(Result),
+      void Function(ProcessResult result) check,
       String executable,
       List<String> arguments, {
       String workingDirectory,
       Map<String, String> environment,
       bool includeParentEnvironment: true,
       bool runInShell: false,
-      SystemEncoding stdoutEncoding: SYSTEM_ENCODING,
-      SystemEncoding stderrEncoding: SYSTEM_ENCODING,
+      SystemEncoding stdoutEncoding: systemEncoding,
+      SystemEncoding stderrEncoding: systemEncoding,
       StreamSink<List<int>> stdout,
     }) async {
       ProcessResult result = await Process.run(
