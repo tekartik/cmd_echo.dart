@@ -6,7 +6,7 @@ import 'package:pub_semver/pub_semver.dart';
 
 import 'package:tekartik_common_utils/hex_utils.dart';
 
-Version version = new Version(0, 1, 0);
+Version version = Version(0, 1, 0);
 
 String get currentScriptName => basenameWithoutExtension(Platform.script.path);
 
@@ -25,10 +25,10 @@ Global options:
 ///
 /// write rest arguments as lines
 ///
-main(List<String> arguments) async {
+Future main(List<String> arguments) async {
   //setupQuickLogging();
 
-  ArgParser parser = new ArgParser(allowTrailingOptions: false);
+  ArgParser parser = ArgParser(allowTrailingOptions: false);
   parser.addFlag('help', abbr: 'h', help: 'Usage help', negatable: false);
   parser.addFlag('verbose', abbr: 'v', help: 'Verbose', negatable: false);
   parser.addOption('stdout',
@@ -50,7 +50,7 @@ main(List<String> arguments) async {
   var help = _argsResult['help'] as bool;
   var verbose = _argsResult['verbose'] as bool;
 
-  _printUsage() {
+  void _printUsage() {
     stdout.writeln('Echo utility');
     stdout.writeln();
     stdout.writeln('Usage: ${currentScriptName} <command> [<arguments>]');

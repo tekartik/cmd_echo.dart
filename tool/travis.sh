@@ -3,7 +3,6 @@
 # Fast fail the script on failures.
 set -e
 
-dartanalyzer --fatal-warnings \
-  lib/cmd_echo.dart
+dartanalyzer --fatal-warnings  --fatal-infos .
 
 pub run test -p vm
