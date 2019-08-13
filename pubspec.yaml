@@ -1,6 +1,6 @@
 name: tekartik_cmd_echo
 description: A sample command-line application.
-version: 0.2.1
+version: 0.2.1+1
 homepage: https://github.com/tekartik/cmd_echo.dart
 author: tekartik <alex@tekartik.com>
 environment:
@@ -15,7 +15,7 @@ dependencies:
   args: any
   pub_semver: any
   path: any
-  process_run: any
+  process_run: '>=0.10.2'
 
 dev_dependencies:
   dev_test: any
