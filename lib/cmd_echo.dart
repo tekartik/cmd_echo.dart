@@ -28,7 +28,7 @@ Global options:
 Future main(List<String> arguments) async {
   //setupQuickLogging();
 
-  ArgParser parser = ArgParser(allowTrailingOptions: false);
+  final parser = ArgParser(allowTrailingOptions: false);
   parser.addFlag('help', abbr: 'h', help: 'Usage help', negatable: false);
   parser.addFlag('verbose', abbr: 'v', help: 'Verbose', negatable: false);
   parser.addOption('stdout',
@@ -45,7 +45,7 @@ Future main(List<String> arguments) async {
   parser.addFlag('version',
       help: 'Print the command version', negatable: false);
 
-  ArgResults _argsResult = parser.parse(arguments);
+  final _argsResult = parser.parse(arguments);
 
   var help = _argsResult['help'] as bool;
   var verbose = _argsResult['verbose'] as bool;
@@ -55,10 +55,10 @@ Future main(List<String> arguments) async {
     stdout.writeln();
     stdout.writeln('Usage: ${currentScriptName} <command> [<arguments>]');
     stdout.writeln();
-    stdout.writeln('Example: ${currentScriptName} -o "Hello world"');
-    stdout.writeln('will display "Hellow world"');
+    stdout.writeln("Example: ${currentScriptName} -o 'Hello world'");
+    stdout.writeln("will display 'Hellow world'");
     stdout.writeln();
-    stdout.writeln("Global options:");
+    stdout.writeln('Global options:');
     stdout.writeln(parser.usage);
   }
 
@@ -81,7 +81,7 @@ Future main(List<String> arguments) async {
       //stderr.writeln('stdin  $stdin');
       //stderr.writeln('stdin  ${await stdin..isEmpty}');
     }
-    String lineSync = stdin.readLineSync();
+    final lineSync = stdin.readLineSync();
     if (lineSync != null) {
       stdout.write(lineSync);
     }
@@ -106,7 +106,7 @@ Future main(List<String> arguments) async {
   }
 
   // handle the rest, default to output
-  for (String rest in _argsResult.rest) {
+  for (final rest in _argsResult.rest) {
     stdout.writeln(rest);
   }
 

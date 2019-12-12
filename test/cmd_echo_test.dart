@@ -1,5 +1,5 @@
 import 'dart:async';
-@TestOn("vm")
+@TestOn('vm')
 import 'dart:io';
 
 import 'package:dev_test/test.dart';
@@ -23,7 +23,7 @@ void main() {
       SystemEncoding stderrEncoding = systemEncoding,
       StreamSink<List<int>> stdout,
     }) async {
-      ProcessResult result = await Process.run(
+      var result = await Process.run(
         executable,
         arguments,
         workingDirectory: workingDirectory,
@@ -48,7 +48,7 @@ void main() {
     test('stdout', () async {
       void checkOut(ProcessResult result) {
         expect(result.stderr, '');
-        expect(result.stdout, "out");
+        expect(result.stdout, 'out');
         expect(result.pid, isNotNull);
         expect(result.exitCode, 0);
       }
@@ -90,7 +90,7 @@ void main() {
     test('stderr', () async {
       void checkErr(ProcessResult result) {
         expect(result.stdout, '');
-        expect(result.stderr, "err");
+        expect(result.stderr, 'err');
         expect(result.pid, isNotNull);
         expect(result.exitCode, 0);
       }

@@ -4,7 +4,7 @@ version: 0.2.1+1
 homepage: https://github.com/tekartik/cmd_echo.dart
 author: tekartik <alex@tekartik.com>
 environment:
-  sdk: '>=2.1.0-dev <3.0.0'
+  sdk: '>=2.6.0 <3.0.0'
 
 dependencies:
   tekartik_common_utils:
