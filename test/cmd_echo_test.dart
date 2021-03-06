@@ -34,7 +34,7 @@ void main() {
         stderrEncoding: stderrEncoding,
       );
       check(result);
-      result = await run(executable, arguments,
+      result = await runExecutableArguments(executable, arguments,
           workingDirectory: workingDirectory,
           environment: environment,
           includeParentEnvironment: includeParentEnvironment,
