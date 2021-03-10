@@ -53,9 +53,9 @@ Future main(List<String> arguments) async {
   void _printUsage() {
     stdout.writeln('Echo utility');
     stdout.writeln();
-    stdout.writeln('Usage: ${currentScriptName} <command> [<arguments>]');
+    stdout.writeln('Usage: $currentScriptName <command> [<arguments>]');
     stdout.writeln();
-    stdout.writeln("Example: ${currentScriptName} -o 'Hello world'");
+    stdout.writeln("Example: $currentScriptName -o 'Hello world'");
     stdout.writeln("will display 'Hellow world'");
     stdout.writeln();
     stdout.writeln('Global options:');
@@ -70,7 +70,7 @@ Future main(List<String> arguments) async {
   var displayVersion = _argsResult['version'] as bool;
 
   if (displayVersion) {
-    stdout.write('${currentScriptName} version ${version}');
+    stdout.write('$currentScriptName version $version');
     stdout.writeln('VM: ${Platform.resolvedExecutable} ${Platform.version}');
     return;
   }
