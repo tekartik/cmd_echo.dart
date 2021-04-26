@@ -1,5 +1,5 @@
-import 'dart:async';
 @TestOn('vm')
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dev_test/test.dart';
