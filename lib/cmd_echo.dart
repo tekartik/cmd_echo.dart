@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart';
 import 'package:pub_semver/pub_semver.dart';
-
 import 'package:tekartik_common_utils/hex_utils.dart';
 
 Version version = Version(0, 1, 0);
@@ -56,7 +55,7 @@ Future main(List<String> arguments) async {
     stdout.writeln('Usage: $currentScriptName <command> [<arguments>]');
     stdout.writeln();
     stdout.writeln("Example: $currentScriptName -o 'Hello world'");
-    stdout.writeln("will display 'Hellow world'");
+    stdout.writeln("will display 'Hello world'");
     stdout.writeln();
     stdout.writeln('Global options:');
     stdout.writeln(parser.usage);
