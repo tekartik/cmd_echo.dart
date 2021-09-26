@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart';
 import 'package:pub_semver/pub_semver.dart';
-
 import 'package:tekartik_common_utils/hex_utils.dart';
 
 Version version = Version(0, 1, 0);
@@ -48,7 +47,7 @@ Future main(List<String> arguments) async {
   final _argsResult = parser.parse(arguments);
 
   var help = _argsResult['help'] as bool;
-  var verbose = _argsResult['verbose'] as bool;
+  var verbose = _argsResult['verbose'] as bool?;
 
   void _printUsage() {
     stdout.writeln('Echo utility');
@@ -56,7 +55,7 @@ Future main(List<String> arguments) async {
     stdout.writeln('Usage: $currentScriptName <command> [<arguments>]');
     stdout.writeln();
     stdout.writeln("Example: $currentScriptName -o 'Hello world'");
-    stdout.writeln("will display 'Hellow world'");
+    stdout.writeln("will display 'Hello world'");
     stdout.writeln();
     stdout.writeln('Global options:');
     stdout.writeln(parser.usage);
@@ -77,7 +76,7 @@ Future main(List<String> arguments) async {
 
   // handle stdin if asked for it
   if (_argsResult['stdin'] as bool) {
-    if (verbose) {
+    if (verbose!) {
       //stderr.writeln('stdin  $stdin');
       //stderr.writeln('stdin  ${await stdin..isEmpty}');
     }
@@ -87,20 +86,20 @@ Future main(List<String> arguments) async {
     }
   }
   // handle stdout
-  var outputText = _argsResult['stdout'] as String;
+  var outputText = _argsResult['stdout'] as String?;
   if (outputText != null) {
     stdout.write(outputText);
   }
-  var hexOutputText = _argsResult['stdout-hex'] as String;
+  var hexOutputText = _argsResult['stdout-hex'] as String?;
   if (hexOutputText != null) {
     stdout.add(parseHexString(hexOutputText));
   }
   // handle stderr
-  var stderrText = _argsResult['stderr'] as String;
+  var stderrText = _argsResult['stderr'] as String?;
   if (stderrText != null) {
     stderr.write(stderrText);
   }
-  var stderrHexTest = _argsResult['stderr-hex'] as String;
+  var stderrHexTest = _argsResult['stderr-hex'] as String?;
   if (stderrHexTest != null) {
     stderr.add(parseHexString(stderrHexTest));
   }
@@ -111,7 +110,7 @@ Future main(List<String> arguments) async {
   }
 
   // exit code!
-  var exitCodeText = _argsResult['exit-code'] as String;
+  var exitCodeText = _argsResult['exit-code'] as String?;
   if (exitCodeText != null) {
     exit(int.parse(exitCodeText));
   }
