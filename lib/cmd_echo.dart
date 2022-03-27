@@ -44,10 +44,10 @@ Future main(List<String> arguments) async {
   parser.addFlag('version',
       help: 'Print the command version', negatable: false);
 
-  final _argsResult = parser.parse(arguments);
+  final argResults = parser.parse(arguments);
 
-  var help = _argsResult['help'] as bool;
-  var verbose = _argsResult['verbose'] as bool?;
+  var help = argResults['help'] as bool;
+  var verbose = argResults['verbose'] as bool?;
 
   void _printUsage() {
     stdout.writeln('Echo utility');
@@ -66,7 +66,7 @@ Future main(List<String> arguments) async {
     return;
   }
 
-  var displayVersion = _argsResult['version'] as bool;
+  var displayVersion = argResults['version'] as bool;
 
   if (displayVersion) {
     stdout.write('$currentScriptName version $version');
@@ -75,7 +75,7 @@ Future main(List<String> arguments) async {
   }
 
   // handle stdin if asked for it
-  if (_argsResult['stdin'] as bool) {
+  if (argResults['stdin'] as bool) {
     if (verbose!) {
       //stderr.writeln('stdin  $stdin');
       //stderr.writeln('stdin  ${await stdin..isEmpty}');
@@ -86,31 +86,31 @@ Future main(List<String> arguments) async {
     }
   }
   // handle stdout
-  var outputText = _argsResult['stdout'] as String?;
+  var outputText = argResults['stdout'] as String?;
   if (outputText != null) {
     stdout.write(outputText);
   }
-  var hexOutputText = _argsResult['stdout-hex'] as String?;
+  var hexOutputText = argResults['stdout-hex'] as String?;
   if (hexOutputText != null) {
     stdout.add(parseHexString(hexOutputText));
   }
   // handle stderr
-  var stderrText = _argsResult['stderr'] as String?;
+  var stderrText = argResults['stderr'] as String?;
   if (stderrText != null) {
     stderr.write(stderrText);
   }
-  var stderrHexTest = _argsResult['stderr-hex'] as String?;
+  var stderrHexTest = argResults['stderr-hex'] as String?;
   if (stderrHexTest != null) {
     stderr.add(parseHexString(stderrHexTest));
   }
 
   // handle the rest, default to output
-  for (final rest in _argsResult.rest) {
+  for (final rest in argResults.rest) {
     stdout.writeln(rest);
   }
 
   // exit code!
-  var exitCodeText = _argsResult['exit-code'] as String?;
+  var exitCodeText = argResults['exit-code'] as String?;
   if (exitCodeText != null) {
     exit(int.parse(exitCodeText));
   }
