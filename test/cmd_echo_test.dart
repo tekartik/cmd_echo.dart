@@ -11,7 +11,7 @@ String get echoScriptPath => join('bin', 'echo.dart');
 
 void main() {
   group('cmd_echo', () {
-    Future _runCheck(
+    Future runCheck(
       void Function(ProcessResult result) check,
       String executable,
       List<String> arguments, {
@@ -60,9 +60,9 @@ void main() {
         expect(result.exitCode, 0);
       }
 
-      await _runCheck(
+      await runCheck(
           checkOut, dartExecutable!, [echoScriptPath, '--stdout', 'out']);
-      await _runCheck(checkEmpty, dartExecutable!, [echoScriptPath]);
+      await runCheck(checkEmpty, dartExecutable!, [echoScriptPath]);
     });
 
     test('stdout_bin', () async {
@@ -80,10 +80,10 @@ void main() {
         expect(result.exitCode, 0);
       }
 
-      await _runCheck(
+      await runCheck(
           check123, dartExecutable!, [echoScriptPath, '--stdout-hex', '010203'],
           stdoutEncoding: null);
-      await _runCheck(checkEmpty, dartExecutable!, [echoScriptPath],
+      await runCheck(checkEmpty, dartExecutable!, [echoScriptPath],
           stdoutEncoding: null);
     });
 
@@ -102,10 +102,10 @@ void main() {
         expect(result.exitCode, 0);
       }
 
-      await _runCheck(
+      await runCheck(
           checkErr, dartExecutable!, [echoScriptPath, '--stderr', 'err'],
           stdout: stdout);
-      await _runCheck(checkEmpty, dartExecutable!, [echoScriptPath]);
+      await runCheck(checkEmpty, dartExecutable!, [echoScriptPath]);
     });
 
     test('stderr_bin', () async {
@@ -123,10 +123,10 @@ void main() {
         expect(result.exitCode, 0);
       }
 
-      await _runCheck(
+      await runCheck(
           check123, dartExecutable!, [echoScriptPath, '--stderr-hex', '010203'],
           stderrEncoding: null);
-      await _runCheck(checkEmpty, dartExecutable!, [echoScriptPath],
+      await runCheck(checkEmpty, dartExecutable!, [echoScriptPath],
           stderrEncoding: null);
     });
 
@@ -145,9 +145,9 @@ void main() {
         expect(result.exitCode, 0);
       }
 
-      await _runCheck(
+      await runCheck(
           check123, dartExecutable!, [echoScriptPath, '--exit-code', '123']);
-      await _runCheck(check0, dartExecutable!, [echoScriptPath]);
+      await runCheck(check0, dartExecutable!, [echoScriptPath]);
     });
 
     test('crash', () async {
@@ -158,7 +158,7 @@ void main() {
         expect(result.exitCode, 255);
       }
 
-      await _runCheck(
+      await runCheck(
           check, dartExecutable!, [echoScriptPath, '--exit-code', 'crash']);
     });
   });

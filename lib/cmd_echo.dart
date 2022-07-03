@@ -49,7 +49,7 @@ Future main(List<String> arguments) async {
   var help = argResults['help'] as bool;
   var verbose = argResults['verbose'] as bool?;
 
-  void _printUsage() {
+  void printUsage() {
     stdout.writeln('Echo utility');
     stdout.writeln();
     stdout.writeln('Usage: $currentScriptName <command> [<arguments>]');
@@ -62,7 +62,7 @@ Future main(List<String> arguments) async {
   }
 
   if (help) {
-    _printUsage();
+    printUsage();
     return;
   }
 
